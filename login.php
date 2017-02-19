@@ -19,13 +19,13 @@ $password=$_POST['password'];
 // To protect MySQL injection for Security purpose
 $username = stripslashes($username);
 $password = stripslashes($password);
-$username = mysqli_real_escape_string($conn,$username);
-$password = mysqli_real_escape_string($conn,$password);
+$username = mysql_real_escape_string($username);
+$password = mysql_real_escape_string($password);
 
 
 // SQL query to fetch information of registerd users and finds user match.
-$query = mysqli_query($conn,"select * from user where password='$password' AND username='$username'");
-$rows = mysqli_num_rows($query);
+$query = mysql_query("select * from user where password='$password' AND username='$username'");
+$rows = mysql_num_rows($query);
 if ($rows == 1) {
 $_SESSION['login_user']=$username; // Initializing Session
 header("location: home.php"); // Redirecting To Other Page

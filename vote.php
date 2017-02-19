@@ -14,8 +14,8 @@
 <?php
 	
 	$sql = "SELECT * FROM poll WHERE poll_id = '".$_GET["poll_id"]."'"; 
-	$query = mysqli_query($conn,$sql);
-	$poll = mysqli_fetch_array($query);
+	$query = mysql_query($sql);
+	$poll = mysql_fetch_array($query);
 	$p_id = $poll['poll_id']; //set to use in session
 	$title = $poll['poll_topic'];
 	$_SESSION['title'] = $title;
@@ -24,7 +24,7 @@
 	#	$title = 'No Poll Yet';
 	#}
 	$sql = "SELECT * FROM choice WHERE poll_id = '".$_GET["poll_id"]."'"; 
-	$query = mysqli_query($conn,$sql);
+	$query = mysql_query($sql);
 	#$rows = mysql_num_rows($query);
 	#echo $rows;
 	
@@ -36,7 +36,7 @@
 
 <?php 
 	
-	while ($choice = mysqli_fetch_array($query))
+	while ($choice = mysql_fetch_array($query))
 	{
 		?>	
 		<br></br>
@@ -45,8 +45,8 @@
 	<div class="radio" style="text-align:center; font-size:20px;">
 			
 		<label>
-			<input type="radio" name="choice_id" value="<?php echo $choice["choice_id"]; ?>" >
-			<?php echo $choice["choice_name"]; ?>
+			<input type="radio" name="choice_id" value="<?php echo $choice['choice_id']; ?>" >
+			<?php echo $choice['choice_name']; ?>
 		</label>
 	</div>
 	</table>
@@ -60,10 +60,10 @@
 	}
 ?>
 	<div class="col-sm-12 controls" style="text-align:center; font-size:20px;">
-		<input type="submit" name="vote" value="vote" ><!--a href="vote_success.php"></a-->
-		</div>
+		<input type="submit" name="vote" value="vote" ><a href="vote_success.php"></a>
+		
 		<!--a href="vote_success.php" type="submit" name="vote" class="btn btn-info btn active" value="vote" role="button"></a>  
-		</div-->
+		</div>
 		
 
 </form>	

@@ -12,9 +12,9 @@ include('dbconnect.php');
  // if session is not set this will redirect to login page
    
 $sql = "SELECT * FROM poll ORDER BY poll_id ";
-$query = mysqli_query($conn,$sql);
+$query = mysql_query($sql);
 
-$row_poll = mysqli_num_rows($query);
+$row_poll = mysql_num_rows($query);
 
 
 ?>
@@ -55,7 +55,7 @@ $row_poll = mysqli_num_rows($query);
 			}
         else
 			{
-				if(mysqli_num_rows($query) == 0)
+				if(mysql_num_rows($query) == 0)
 				{
                 echo 'There are no topics yet.';
 				}
@@ -72,7 +72,7 @@ $row_poll = mysqli_num_rows($query);
 			</tr>
 			
 	<?php
-			while($row = mysqli_fetch_assoc($query))
+			while($row = mysql_fetch_assoc($query))
                 {  
 				?>
                     <tr>

@@ -7,12 +7,12 @@ include ('dbconnect.php');
 
  // insert new topic in db
 	$sql = "INSERT INTO poll(poll_topic) VALUES('$poll_name')";
-	$query= mysqli_query($conn,$sql); 
+	$query= mysql_query($sql); 
   
   $sqlpoll = "SELECT poll_id FROM poll WHERE poll_topic = '$poll_name'";
  
   // Perform Query
-	$querypoll = mysqli_query($conn,$sqlpoll);
+	$querypoll = mysql_query($sqlpoll);
 	
 
 // Check result
@@ -25,7 +25,7 @@ include ('dbconnect.php');
 
 // Use result
 
-	$row = mysqli_fetch_array($querypoll,MYSQLI_ASSOC); 
+	$row = mysql_fetch_array($querypoll); 
    
 	$pollid =$row['poll_id'];
 	
@@ -34,7 +34,7 @@ include ('dbconnect.php');
 	//insert new choice 
 	
 		$sqlop = "INSERT INTO choice(poll_id,choice_name) VALUES('$pollid','$options[$i]')"; 
-		$second= mysqli_query($conn,$sqlop);
+		$second= mysql_query($sqlop);
 	 }	  
 
  if ($query and $second) {
