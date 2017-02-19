@@ -2,12 +2,13 @@
 <html>
 <head>
 
-	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
 </head>
-<body>
+<body align = "center" style="margin-top:100px;">
 	<div id="main">
 		<h1> Create Success!! </h1>
-	<div class="form-group">
+		<br></br>
+	<div class="form-group" >
 		<a href="home.php"> Back to view your topic </a>
 	</div>
 

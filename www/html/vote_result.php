@@ -2,9 +2,9 @@
 	include ('dbconnect.php');
 	session_start();
 	
-	$sql = "SELECT vote_id FROM vote WHERE poll_id = '{$_SESSION['pid']}' ";
-	$querytotal = mysql_query($sql);
-	$totalvote = mysql_num_rows($querytotal);
+	$sql = "SELECT vote_id FROM vote WHERE poll_id ='{$_SESSION['pid']}'";
+	$querytotal = mysqli_query($conn,$sql);
+	$totalvote = mysqli_num_rows($querytotal);
 	
 ?>
 
@@ -19,12 +19,12 @@
 	<?php
 		// select choice to display
 		$sqlc = "SELECT * FROM choice WHERE poll_id='{$_SESSION['pid']}' ORDER BY choice_id";
-		$queryc = mysql_query($sqlc);
-		$choice = mysql_num_rows($queryc);
+		$queryc = mysqli_query($conn,$sqlc);
+		$choice = mysqli_num_rows($queryc);
 		
 		if($choice > 0){
 		
-			while($ch = mysql_fetch_array($queryc)){
+			while($ch = mysqli_fetch_array($queryc)){
 			
 			if($totalvote >0 )
 			{ 
@@ -39,8 +39,8 @@
 		<?php
 			$check_right_td=0;
 			$sqlp = "SELECT COUNT(vote_id) as nvote FROM vote WHERE poll_id = '{$_SESSION['pid']}' AND choice_id=".$ch['choice_id']."";
-			$queryp = mysql_query($sqlp);
-			while($result = mysql_fetch_array($queryp))
+			$queryp = mysqli_query($conn,$sqlp);
+			while($result = mysqli_fetch_array($queryp))
 			{
 			?>	
 		<tr>
