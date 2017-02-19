@@ -47,7 +47,7 @@
   if( !$error ) {
 
    $query = "INSERT INTO user(username,password) VALUES('$name','$pass')";
-   $res = mysql_query($query);
+   $res = mysqli_query($conn,$query);
 
    if ($res) {
     $errTyp = "success";
@@ -100,9 +100,9 @@
 			    				<div class="col-md-10">
 			    					<div class="form-group">
                       <div class="input-group">
-                      <input type="text" name="name"id="first_name" class="form-control input-sm" placeholder="Enter Name" maxlength="50" value="<?php echo $name ?>" />
+                      <input type="text" name="name"id="first_name" class="form-control input-sm" placeholder="Enter Name" maxlength="50"  />
                       </div>
-                      <span class="text-danger"><?php echo $nameError; ?></span>
+                      <span class="text-danger"><//?php echo $nameError; ?></span>
 			    					</div>
 
 			    				</div>
@@ -117,7 +117,7 @@
 
                           <input type="password" name="pass" class="form-control input-sm" placeholder="Enter Password" maxlength="15" />
              		      </div>
-                            <span class="text-danger"><?php echo $passError; ?></span>
+                            <span class="text-danger"><//?php echo $passError; ?></span>
 
 			    					</div>
 			    				</div>
